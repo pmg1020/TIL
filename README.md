@@ -1,4 +1,6 @@
-[앱프로그래밍](https://github.com/pmg1020/TIL/tree/main/25%EB%85%84%201%ED%95%99%EA%B8%B0/AppProgramminggit)
+# 25년 1학기 강의
+
+[앱프로그래밍](https://github.com/pmg1020/TIL/tree/main/25%EB%85%84%201%ED%95%99%EA%B8%B0/AppProgramming)
 
 # VS Code에서 Github 폴더 옮기는 방법
 1. git clone <저장소_주소> : Github 저장소를 로컬에 복제
