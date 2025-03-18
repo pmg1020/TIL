@@ -161,3 +161,84 @@ void main() {
   });
  }
 ```
+
+### 실습 6
+```dart
+enum LoginStatus {login, logout}
+
+void main() {
+  LoginStatus status = LoginStatus.logout;
+  
+  print(status);
+  
+  switch (status) {
+    case LoginStatus.login:
+      print('로그인');
+      break;
+    case LoginStatus.logout:
+      print('로그아웃');
+      break;
+  }
+}
+```
+
+### 실습 7
+```dart
+void main() {
+  var lottoNums = [5, 6, 11, 13, 17, 21];
+  var countryMap = {'한국' : '서울', '일본': '도쿄', '중국': '북경'};
+  var setNums = { 1, 2, 3, 4, 5, 6};
+  
+  print(lottoNums[0]); //5
+  print(countryMap['일본']);  // 도쿄
+  print(setNums.contains(5));  //true
+  
+  lottoNums.add(45);  // 보너스 번호
+  print(lottoNums);
+  
+  countryMap['인도'] = '뉴델리';
+  print(countryMap);
+  
+  setNums.add(6);
+  print(setNums);
+}
+```
+
+### 실습 8
+```dart
+void main() {
+  var lottoNums = [5, 6, 11, 13, 17, 21];
+  
+  // lottoNums.forEach((num) => print(num));
+  
+  lottoNums.forEach((num) {
+    print(num);
+  });
+  
+  var f = () => print('되네?');
+  f();
+}
+```
+
+### 실습 9
+```dart
+void main() {
+  bool promoActive = true;
+  
+  var result = [1, 2, 3, 4, 5, if (promoActive) 6];
+  print(result);
+}
+```
+### 실습 10
+```dart
+class Person {
+  String? name;
+  int? age;
+}
+
+void main() {
+  var p = Person();
+  //p.name = '박민기';
+  print(p.name?.length ?? 0);
+}
+```
