@@ -1,8 +1,67 @@
-### 실습 1
+# 250318
 
+## Dart 문법 2
+
+### 객체 지향 프로그래밍
+- 객체(Object): 상태(값, 필드) + 행위(기능, 메서드)
+
+- 클래스(Class): 객체의 설계도
+
+- 인스턴스(Instance): 클래스를 통해 만들어진 객체
+
+#### 주요 문법
+- 접근 지정자: 변수명 앞에 _ → private (외부 접근 불가)
+
+- 생성자(Constructor): Person({this.name, this._age}) 형태로 정의 가능
+
+- 게터/세터: 값을 읽거나 설정할 때 사용
+
+- 상속: extends, super.run() 으로 부모 메서드 호출 가능
+
+- 추상 클래스: abstract 키워드 사용, 구현 없이 선언만
+
+- 믹스인(Mixin): with 키워드로 다중 기능 포함
+
+ - 열거형(Enum): 상수 목록 정의
+
+###  컬렉션 (Collection)
+- List: 순서 있는 배열 → [1, 2, 3]
+
+- Map: 키-값 쌍 → { '한국': '서울' }
+
+- Set: 중복 없는 집합 → {1, 2, 3}
+
+#### 주요 기능
+- 스프레드 연산자 : 배열 병합
+
+ - dynamic 타입: 다양한 타입 허용 (예: [1, 'hello'])
+
+### 함수형 프로그래밍
+일급 객체: 함수를 변수에 저장, 인자로 전달, 반환값으로 사용 가능
+
+- forEach(): List 반복 처리
+
+- where(): 조건 필터링
+
+- map(): 값 변환
+
+- toList(), toSet(): 형 변환 및 중복 제거
+
+- any(): 하나라도 조건 충족하는지 확인
+
+- reduce(): 요소 누적 처리
+
+### 유용한 기법
+- 계단식 표기법 (..): 연속 호출
+
+- 컬렉션 if / for: 조건문, 반복문을 컬렉션에 사용
+
+- null 처리 관련 문법: ??, ?. 등
+
+##### 실습 1
 ```dart
 class Person {
-  String _name = "";
+  String _name = S"";
   int _age = 0;
   String desc = "";
   
@@ -26,7 +85,7 @@ void main() {
   print(p.age);
 }
 ```
-### 실습 2
+##### 실습 2
 ```dart
 class Rectangle {
   num left, top, width, height;
@@ -50,7 +109,7 @@ void main() {
   print([r.left, r.top, r.width, r.height]);
 }
 ```
-### 실습 3
+##### 실습 3
 ```dart
 // Rectangle의 필드를 left, top, right, bottom으로 하고
 // get, set을 이용해서 width, height를 만들고 사용해보자
@@ -76,7 +135,7 @@ void main() {
   print([r.left, r.top, r.right, r.bottom]);
 }
 ```
-### 실습 4
+#### 실습 4
 ```dart
 class Hero {
   String name = '영웅';
@@ -116,7 +175,7 @@ void main() {
   heroes.forEach((hero) => hero.run());
 }
 ```
-### 실습 5
+#### 실습 5
 ```dart
 // Monster는 attack 할 수 있다.
 abstract class Monster {
@@ -162,7 +221,7 @@ void main() {
  }
 ```
 
-### 실습 6
+##### 실습 6
 ```dart
 enum LoginStatus {login, logout}
 
@@ -182,7 +241,7 @@ void main() {
 }
 ```
 
-### 실습 7
+##### 실습 7
 ```dart
 void main() {
   var lottoNums = [5, 6, 11, 13, 17, 21];
@@ -204,7 +263,7 @@ void main() {
 }
 ```
 
-### 실습 8
+#### 실습 8
 ```dart
 void main() {
   var lottoNums = [5, 6, 11, 13, 17, 21];
@@ -220,7 +279,7 @@ void main() {
 }
 ```
 
-### 실습 9
+#### 실습 9
 ```dart
 void main() {
   bool promoActive = true;
@@ -229,7 +288,7 @@ void main() {
   print(result);
 }
 ```
-### 실습 10
+#### 실습 10
 ```dart
 class Person {
   String? name;
