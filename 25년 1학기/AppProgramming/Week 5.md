@@ -18,4 +18,166 @@
 
 - 플러터 스튜디오
   
-  드래그&드롭으로 위젯을 간단히 시험, 코드 수정X  
+  드래그&드롭으로 위젯을 간단히 시험, 코드 수정X 
+
+#### 과제1 Color
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MaterialApp(
+    home: MyApp(),
+  ));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Container(color: Colors.red),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Container(color: Colors.blue),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Container(color: Colors.black),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Container(color: Colors.orange),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(color: Colors.yellow),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+![Color](./images/color.png)
+
+#### 과제2 
+``` dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MaterialApp(
+    home: MyApp(),
+  ));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> buttons = [
+      '%', 'CE', 'C', '⌫',
+      '⅟x', 'x²', '√x', '÷',
+      '7', '8', '9', '×',
+      '4', '5', '6', '−',
+      '1', '2', '3', '+',
+      '+/−', '0', '.', '='
+    ];
+
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final totalHeight = constraints.maxHeight;
+            final totalWidth = constraints.maxWidth;
+
+            final displayHeight = totalHeight * 0.25; // 결과 영역 증가
+            final buttonHeight = (totalHeight * 0.75) / 6;
+            final buttonWidth = totalWidth / 4;
+
+            return Column(
+              children: [
+                // 상단 결과 표시 영역
+                SizedBox(
+                  height: displayHeight,
+                  child: Container(
+                    padding: const EdgeInsets.all(24),
+                    alignment: Alignment.bottomRight,
+                    child: const Text(
+                      '0',
+                      style: TextStyle(color: Colors.white, fontSize: 56),
+                    ),
+                  ),
+                ),
+
+                // 버튼들 (4열 x 6줄)
+                SizedBox(
+                  height: totalHeight * 0.75,
+                  child: Wrap(
+                    spacing: 6,
+                    runSpacing: 6,
+                    children: buttons.map((text) {
+                      final isOperator = ['%', '÷', '×', '−', '+', '='].contains(text);
+                      return SizedBox(
+                        width: buttonWidth - 8,
+                        height: buttonHeight - 8,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: isOperator
+                                ? Colors.blueAccent
+                                : Colors.grey[850],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: Text(
+                            text,
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: isOperator ? Colors.white : Colors.grey[200],
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+```
+![Calculator](./images/Calculator.png)
