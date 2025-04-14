@@ -91,6 +91,248 @@
 
 
 ## 과제
+### 6.3.1
+```dart
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        useMaterial3: false,
+      ),
+      home: FirstPage(),   // 첫 페이지를 시작 페이지로 지정
+    );
+  }
+}
+
+// 첫 페이지
+class FirstPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    print('FirstPage build()');
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First'),
+      ),
+      body: ElevatedButton(
+        child: Text('다음 페이지로'),
+        onPressed: () async {
+          final result = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SecondPage()),
+          );
+
+          print(result);
+        },
+      ),
+    );
+  }
+}
 
 
+// 두번째 페이지
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    print('SecondPage build()');
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Second'),
+      ),
+      body: ElevatedButton(
+        child: Text('이전 페이지로'),
+        onPressed: () {
+          Navigator.pop(context, 'ok');
+        },
+      ),
+    );
+  }
+}
+```
+![push-pop](./images/6.3.1.png)
+
+### 6.3.2
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MaterialApp(home: FirstStatefulPage()));
+}
+
+// 첫 번째 페이지
+class FirstStatefulPage extends StatefulWidget {
+  const FirstStatefulPage({Key? key}) : super(key: key);
+
+  @override
+  State<FirstStatefulPage> createState() => _FirstStatefulPageState();
+}
+
+class _FirstStatefulPageState extends State<FirstStatefulPage> {
+  @override
+  Widget build(BuildContext context) {
+    print("FirstPage build()");
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("First"),
+      ),
+      body: ElevatedButton(
+        child: const Text("다음 페이지로"),
+        onPressed: () {
+          final person = Person("홍길동", 20);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SecondStatefulPage(person: person),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+// 데이터 클래스
+class Person {
+  final String name;
+  final int age;
+
+  Person(this.name, this.age);
+}
+
+// 두 번째 페이지
+class SecondStatefulPage extends StatefulWidget {
+  final Person person;
+
+  const SecondStatefulPage({Key? key, required this.person}) : super(key: key);
+
+  @override
+  State<SecondStatefulPage> createState() => _SecondStatefulPageState();
+}
+
+class _SecondStatefulPageState extends State<SecondStatefulPage> {
+  @override
+  Widget build(BuildContext context) {
+    print("SecondPage build()");
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.person.name),
+      ),
+      body: ElevatedButton(
+        child: const Text("이전 페이지로"),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+  }
+}
+```
+![push-pop2](./images/6.3.2.png)
+### 6.3.3
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MaterialApp(home: FirstStatefulPage()));
+}
+
+// 데이터 클래스
+class Person {
+  final String name;
+  final int age;
+
+  Person(this.name, this.age);
+}
+
+// 첫 번째 페이지
+class FirstStatefulPage extends StatefulWidget {
+  const FirstStatefulPage({Key? key}) : super(key: key);
+
+  @override
+  State<FirstStatefulPage> createState() => _FirstStatefulPageState();
+}
+
+class _FirstStatefulPageState extends State<FirstStatefulPage> {
+  @override
+  void initState() {
+    super.initState();
+    print("FirstPage initState()");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("FirstPage dispose()");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print("FirstPage build()");
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("First"),
+      ),
+      body: ElevatedButton(
+        child: const Text("다음 페이지로"),
+        onPressed: () {
+          final person = Person("홍길동", 20);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SecondStatefulPage(person: person),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+// 두 번째 페이지
+class SecondStatefulPage extends StatefulWidget {
+  final Person person;
+
+  const SecondStatefulPage({Key? key, required this.person}) : super(key: key);
+
+  @override
+  State<SecondStatefulPage> createState() => _SecondStatefulPageState();
+}
+
+class _SecondStatefulPageState extends State<SecondStatefulPage> {
+  @override
+  void initState() {
+    super.initState();
+    print("SecondPage initState()");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("SecondPage dispose()");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print("SecondPage build()");
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.person.name),
+      ),
+      body: ElevatedButton(
+        child: const Text("이전 페이지로"),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+  }
+}
+```
+![initState](./images/6.3.3.png)
 ---
