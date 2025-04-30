@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "243345829576",
+    "project_id": "aquaticket-89725",
+    "storage_bucket": "aquaticket-89725.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243345829576:android:2f03163466106ef4a83ffd",
+        "android_client_info": {
+          "package_name": "com.pmg.aquaticket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMrzLsKCZSpr80y21wtsp8bE7pmH5fJtM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
