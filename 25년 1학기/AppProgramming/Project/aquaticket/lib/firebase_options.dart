@@ -17,19 +17,13 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -59,4 +53,23 @@ class DefaultFirebaseOptions {
     projectId: 'aquaticket-89725',
     storageBucket: 'aquaticket-89725.firebasestorage.app',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyB5f0EUUQUw8mb8t7zJ_B_uXW2adKyWFSs',
+    appId: '1:243345829576:web:aa0eb6e08aab80d3a83ffd',
+    messagingSenderId: '243345829576',
+    projectId: 'aquaticket-89725',
+    authDomain: 'aquaticket-89725.firebaseapp.com',
+    storageBucket: 'aquaticket-89725.firebasestorage.app',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyB91zd3p5lvOxKIrwKL2V9J9ojh9OHYcvI',
+    appId: '1:243345829576:ios:5ff0131f7248a372a83ffd',
+    messagingSenderId: '243345829576',
+    projectId: 'aquaticket-89725',
+    storageBucket: 'aquaticket-89725.firebasestorage.app',
+    iosBundleId: 'com.pmg.aquaticket',
+  );
+
 }
