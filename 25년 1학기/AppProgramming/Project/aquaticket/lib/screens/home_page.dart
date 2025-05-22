@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login_page.dart';
+import 'show_list_page.dart';
+import 'reservation_list_page.dart'; // 예매 목록 페이지도 import
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   void _signOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
-
-    // 로그아웃 후 로그인 페이지로 이동
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const LoginPage()),
@@ -28,8 +28,37 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text('환영합니다!'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('환영합니다!'),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ShowListPage(),
+                  ),
+                );
+              },
+              child: const Text('🎫 공연 목록 보기'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>  ReservationListPage(),
+                  ),
+                );
+              },
+              child: const Text('📄 예매 목록 보기'),
+            ),
+          ],
+        ),
       ),
     );
   }
