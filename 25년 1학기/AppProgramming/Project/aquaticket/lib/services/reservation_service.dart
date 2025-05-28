@@ -36,6 +36,10 @@ class ReservationService {
         .orderBy('reservedAt', descending: true)
         .get();
 
-    return snapshot.docs.map((doc) => doc.data()).toList();
+    return snapshot.docs.map((doc) {
+      final data = doc.data();
+      data['id'] = doc.id; // 🔥 문서 ID 추가
+      return data;
+    }).toList();
   }
 }
